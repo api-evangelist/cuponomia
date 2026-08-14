@@ -30,7 +30,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-13'
 tags:
 - Company
 - Coupons
@@ -62,8 +62,36 @@ common:
   url: https://www.cuponomia.com.br/login
 - type: GitHubOrganization
   url: https://github.com/cuponomia
+- type: TermsOfService
+  url: https://www.cuponomia.com.br/termos-uso
+- type: LLMsTxt
+  url: llms/cuponomia-llms.txt
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: minimal
+  artifacts_added: 3
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    STEP 0b contract discovery run against every Cuponomia host; no OpenAPI,
+    GraphQL, MCP or A2A surface exists. Evidence in
+    well-known/cuponomia-contract-discovery.yml.
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Cuponomia's own page sitemap enumerates all 16 static pages on
+    www.cuponomia.com.br and none is a developer portal, API reference or
+    partner-API page; no api./developers./docs./parceiros. subdomain resolves in
+    DNS, and its GitHub org publishes only a coding-dojo repo.
+  evidence:
+  - url: https://www.cuponomia.com.br/openapi.json
+    status: 404
+  - url: https://www.cuponomia.com.br/llms.txt
+    status: 404
+  - url: https://www.cuponomia.com.br/.well-known/agent-card.json
+    status: 404
+  - url: https://www.cuponomia.com.br/page-sitemappp.xml
+    status: 200
+  - url: https://github.com/cuponomia
+    status: 200
+  checked: '2026-08-13'
