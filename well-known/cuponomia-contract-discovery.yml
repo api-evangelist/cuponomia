@@ -1,0 +1,100 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  Live unauthenticated HTTP/DNS probes run as STEP 0b (contract discovery) of the
+  API Evangelist enrichment pipeline.
+note: >-
+  Cuponomia publishes no machine-readable API contract. This file is the evidence
+  behind that statement so a later round does not have to re-litigate it. No
+  OpenAPI/Swagger, GraphQL, MCP or A2A surface was found on any host the company
+  controls. Requests without a browser User-Agent are answered 403 by the edge;
+  every probe below was repeated with a browser UA, and the results recorded are
+  the browser-UA results.
+dns:
+  resolved:
+  - host: www.cuponomia.com.br
+  - host: cuponomia.com.br
+  - host: cuponomia.com
+    note: 301/200 to https://www.cuponomia.com.br/
+  - host: assets.cuponomia.com.br
+  - host: admin.cuponomia.com.br
+    note: >-
+      CNAME to admin-cuponomia.msappproxy.net (Microsoft Entra Application Proxy)
+      — an internal employee application, not a public API host.
+  nxdomain:
+  - api.cuponomia.com.br
+  - developers.cuponomia.com.br
+  - developer.cuponomia.com.br
+  - docs.cuponomia.com.br
+  - parceiros.cuponomia.com.br
+  - partners.cuponomia.com.br
+  - afiliados.cuponomia.com.br
+  - app.cuponomia.com.br
+  - status.cuponomia.com.br
+  - api.cuponomia.com
+openapi_probes:
+- url: https://www.cuponomia.com.br/openapi.json
+  status: 404
+  parses_as_spec: false
+- url: https://www.cuponomia.com.br/openapi.yaml
+  status: 404
+  parses_as_spec: false
+- url: https://www.cuponomia.com.br/swagger.json
+  status: 404
+  parses_as_spec: false
+- url: https://www.cuponomia.com.br/v1/openapi.json
+  status: 404
+  parses_as_spec: false
+- url: https://www.cuponomia.com.br/api-docs
+  status: 404
+  parses_as_spec: false
+- url: https://www.cuponomia.com.br/redoc
+  status: 404
+  parses_as_spec: false
+- url: https://www.cuponomia.com.br/api
+  status: 404
+  parses_as_spec: false
+- url: https://www.cuponomia.com.br/apis
+  status: 404
+  parses_as_spec: false
+graphql_probes: []
+graphql_note: >-
+  No /graphql surface exists to introspect — there is no API host, and the site
+  sitemap contains no developer or GraphQL path.
+mcp_probes: []
+mcp_note: >-
+  No hosted or local MCP server is published by Cuponomia. Nothing to POST
+  tools/list against; no npm/PyPI package under a Cuponomia namespace.
+a2a_probes:
+- url: https://www.cuponomia.com.br/.well-known/agent-card.json
+  status: 404
+- url: https://www.cuponomia.com.br/.well-known/agent.json
+  status: 404
+- url: https://cuponomia.com.br/.well-known/agent-card.json
+  status: 404
+- url: https://cuponomia.com.br/.well-known/agent.json
+  status: 404
+site_survey:
+  robots_txt: https://www.cuponomia.com.br/robots.txt
+  robots_status: 200
+  sitemap_index: https://www.cuponomia.com.br/sitemappp_index.xml
+  static_pages_in_sitemap: 16
+  developer_pages_in_sitemap: 0
+  note: >-
+    The page sitemap enumerates every static page on the site (home, desconto,
+    cupom, como-utilizar-cupons-desconto, sobre, contato, imprensa, termos-uso,
+    privacidade, perguntas-frequentes, trabalhe-conosco, time, atendimento,
+    pesquisas, blog, extensao). None is a developer portal, API reference,
+    partner/affiliate API page, or documentation surface.
+github:
+  org: https://github.com/cuponomia
+  public_repos: 1
+  detail: >-
+    Only public repo is "dojo" (Códigos dos Dojos do Cuponomia) — JavaScript
+    coding-dojo exercises, last updated 2024-05-22. No SDK, client library, or
+    specification is published there.
+conclusion: >-
+  No published machine-readable contract. Cuponomia's product surface is a
+  consumer website, a browser extension and mobile apps; its retailer/affiliate
+  integrations are handled through third-party affiliate networks rather than a
+  first-party public API.
